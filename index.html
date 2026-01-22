@@ -151,120 +151,109 @@
 
     <!-- JavaScript Principal -->
     <script>
-        // ---------------------------------------------------------
-        // DATOS DEL MANUAL (JSON)
-        // INSTRUCCIONES:
-        // Busca el campo 'imageSrc' en cada paso.
-        // Actualmente apunta a una imagen generada automáticamente (placehold.co).
-        // Cambia esa URL por la ruta de tu archivo local (ej: "img/foto1.png").
-        // ---------------------------------------------------------
-            const manualData = [
-        {
-            id: 1,
-            title: "Paso 1: Instalar Servicio SSH",
-            description: "Lo primero es instalar el servidor OpenSSH en la máquina remota. Abre la terminal y ejecuta:",
-            code: "sudo apt install openssh-server",
-            warning: "Asegúrate de tener conexión a internet y permisos de sudo.",
-            imageSrc: "images/foto1.png", // 👈 Cambiado a ruta local
-            imageLabel: "Terminal instalando openssh-server"
-        },
-        {
-            id: 2,
-            title: "Paso 2: Cliente Remmina",
-            description: "En el equipo cliente, necesitamos un gestor de conexiones. Instalamos Remmina:",
-            code: "sudo apt install remmina",
-            imageSrc: "images/foto2.png", // 👈 Cambiado a ruta local
-            imageLabel: "Terminal instalando Remmina"
-        },
-        {
-            id: 3,
-            title: "Paso 3: Generación de Claves",
-            description: "Para aumentar la seguridad, usaremos autenticación por par de claves en lugar de solo contraseña.",
-            code: "ssh-keygen -t rsa -b 4096",
-            note: "Presiona Enter para dejar la ubicación por defecto y la passphrase vacía si deseas login automático.",
-            imageSrc: "images/foto3.png", // 👈 Cambiado a ruta local
-            imageLabel: "Proceso de ssh-keygen"
-        },
-        {
-            id: 4,
-            title: "Paso 4: Copiar Clave Pública",
-            description: "Ahora enviamos nuestra identidad al servidor. Reemplaza usuario e IP según corresponda:",
-            code: "ssh-copy-id usuario@192.168.1.100",
-            subSteps: [
-                "Si no funciona ssh-copy-id, hazlo manual:",
-                "1. Copia tu clave: <code>cat ~/.ssh/id_rsa.pub</code>",
-                "2. En el servidor: <code>nano ~/.ssh/authorized_keys</code>",
-                "3. Pega la clave y guarda."
-            ],
-            warning: "Asegura los permisos correctos: chmod 700 ~/.ssh y chmod 600 authorized_keys",
-            imageSrc: "images/foto4.png", // 👈 Cambiado a ruta local
-            imageLabel: "Comando ssh-copy-id ejecutado"
-        },
-        {
-            id: 5,
-            title: "Paso 5: Comprobación de Transferencia",
-            description: "Verificamos que la clave se ha pasado correctamente al archivo authorized_keys.",
-            imageSrc: "images/foto5.png", // 👈 Cambiado a ruta local
-            imageLabel: "Verificación del archivo de claves"
-        },
-        {
-            id: 6,
-            title: "Paso 6: Permisos de Archivos",
-            description: "Confirmamos que los permisos de la carpeta .ssh y el archivo de claves sean seguros.",
-            code: "ls -ld ~/.ssh\nls -l ~/.ssh/authorized_keys",
-            imageSrc: "images/foto6.png", // 👈 Cambiado a ruta local
-            imageLabel: "Listado de permisos de archivos"
-        },
-        {
-            id: 7,
-            title: "Paso 7: Configuración SSHD",
-            description: "Editamos el archivo de configuración del daemon para mayor seguridad (opcionalmente deshabilitar login por contraseña).",
-            code: "sudo nano /etc/ssh/sshd_config",
-            imageSrc: "images/foto7.png", // 👈 Cambiado a ruta local
-            imageLabel: "Edición del archivo de configuración"
-        },
-        {
-            id: 8,
-            title: "Paso 8: Reiniciar Servicio",
-            description: "Para aplicar los cambios, reiniciamos el servicio SSH y comprobamos su estado.",
-            code: "sudo systemctl restart ssh\nsudo systemctl status ssh",
-            imageSrc: "images/foto8.png", // 👈 Cambiado a ruta local
-            imageLabel: "Estado del servicio systemctl"
-        },
-        {
-            id: 9,
-            title: "Paso 9: Configurar Remmina - Inicio",
-            description: "Abrimos Remmina y creamos un nuevo perfil de conexión.",
-            imageSrc: "images/foto9.png", // 👈 Cambiado a ruta local
-            imageLabel: "Interfaz principal de Remmina"
-        },
-        {
-            id: 10,
-            title: "Paso 10: Configurar Remmina - Protocolo",
-            description: "Seleccionamos protocolo SSH e introducimos la IP del servidor.",
-            imageSrc: "images/foto10.png", // 👈 Cambiado a ruta local
-            imageLabel: "Configurando la IP"
-        },
-        {
-            id: 11,
-            title: "Paso 11: Configurar Remmina - Autenticación",
-            description: "Seleccionamos 'Archivo de identidad' y buscamos nuestra clave privada (id_rsa).",
-            imageSrc: "images/foto11.png", // 👈 Cambiado a ruta local
-            imageLabel: "Seleccionando la clave privada"
-        },
-        {
-            id: 12,
-            title: "Paso 12: Conexión Final",
-            description: "Guardamos y conectamos. Deberíamos entrar sin pedir contraseña.",
-            imageSrc: "images/foto12.png", // 👈 Cambiado a ruta local
-            imageLabel: "Éxito en la conexión"
-        }
-    ];
+        const manualData = [
+            {
+                id: 1,
+                title: "Paso 1: Instalar Servicio SSH",
+                description: "Lo primero es instalar el servidor OpenSSH en la máquina remota. Abre la terminal y ejecuta:",
+                code: "sudo apt install openssh-server",
+                warning: "Asegúrate de tener conexión a internet y permisos de sudo.",
+                imageSrc: "images/foto1.png",
+                imageLabel: "Terminal instalando openssh-server"
+            },
+            {
+                id: 2,
+                title: "Paso 2: Cliente Remmina",
+                description: "En el equipo cliente, necesitamos un gestor de conexiones. Instalamos Remmina:",
+                code: "sudo apt install remmina",
+                imageSrc: "images/foto2.png",
+                imageLabel: "Terminal instalando Remmina"
+            },
+            {
+                id: 3,
+                title: "Paso 3: Generación de Claves",
+                description: "Para aumentar la seguridad, usaremos autenticación por par de claves en lugar de solo contraseña.",
+                code: "ssh-keygen -t rsa -b 4096",
+                note: "Presiona Enter para dejar la ubicación por defecto y la passphrase vacía si deseas login automático.",
+                imageSrc: "images/foto3.png",
+                imageLabel: "Proceso de ssh-keygen"
+            },
+            {
+                id: 4,
+                title: "Paso 4: Copiar Clave Pública",
+                description: "Ahora enviamos nuestra identidad al servidor. Reemplaza usuario e IP según corresponda:",
+                code: "ssh-copy-id usuario@192.168.1.100",
+                subSteps: [
+                    "Si no funciona ssh-copy-id, hazlo manual:",
+                    "1. Copia tu clave: <code>cat ~/.ssh/id_rsa.pub</code>",
+                    "2. En el servidor: <code>nano ~/.ssh/authorized_keys</code>",
+                    "3. Pega la clave y guarda."
+                ],
+                warning: "Asegura los permisos correctos: chmod 700 ~/.ssh y chmod 600 authorized_keys",
+                imageSrc: "images/foto4.png",
+                imageLabel: "Comando ssh-copy-id ejecutado"
+            },
+            {
+                id: 5,
+                title: "Paso 5: Comprobación de Transferencia",
+                description: "Verificamos que la clave se ha pasado correctamente al archivo authorized_keys.",
+                imageSrc: "images/foto5.png",
+                imageLabel: "Verificación del archivo de claves"
+            },
+            {
+                id: 6,
+                title: "Paso 6: Permisos de Archivos",
+                description: "Confirmamos que los permisos de la carpeta .ssh y el archivo de claves sean seguros.",
+                code: "ls -ld ~/.ssh\nls -l ~/.ssh/authorized_keys",
+                imageSrc: "images/foto6.png",
+                imageLabel: "Listado de permisos de archivos"
+            },
+            {
+                id: 7,
+                title: "Paso 7: Configuración SSHD",
+                description: "Editamos el archivo de configuración del daemon para mayor seguridad (opcionalmente deshabilitar login por contraseña).",
+                code: "sudo nano /etc/ssh/sshd_config",
+                imageSrc: "images/foto7.png",
+                imageLabel: "Edición del archivo de configuración"
+            },
+            {
+                id: 8,
+                title: "Paso 8: Reiniciar Servicio",
+                description: "Para aplicar los cambios, reiniciamos el servicio SSH y comprobamos su estado.",
+                code: "sudo systemctl restart ssh\nsudo systemctl status ssh",
+                imageSrc: "images/foto8.png",
+                imageLabel: "Estado del servicio systemctl"
+            },
+            {
+                id: 9,
+                title: "Paso 9: Configurar Remmina - Inicio",
+                description: "Abrimos Remmina y creamos un nuevo perfil de conexión.",
+                imageSrc: "images/foto9.png",
+                imageLabel: "Interfaz principal de Remmina"
+            },
+            {
+                id: 10,
+                title: "Paso 10: Configurar Remmina - Protocolo",
+                description: "Seleccionamos protocolo SSH e introducimos la IP del servidor.",
+                imageSrc: "images/foto10.png",
+                imageLabel: "Configurando la IP"
+            },
+            {
+                id: 11,
+                title: "Paso 11: Configurar Remmina - Autenticación",
+                description: "Seleccionamos 'Archivo de identidad' y buscamos nuestra clave privada (id_rsa).",
+                imageSrc: "images/foto11.png",
+                imageLabel: "Seleccionando la clave privada"
+            },
+            {
+                id: 12,
+                title: "Paso 12: Conexión Final",
+                description: "Guardamos y conectamos. Deberíamos entrar sin pedir contraseña.",
+                imageSrc: "images/foto12.png",
+                imageLabel: "Éxito en la conexión"
+            }
+        ];
 
-        // ---------------------------------------------------------
-        // LÓGICA DE RENDERIZADO (JS)
-        // ---------------------------------------------------------
-        
         const container = document.getElementById('manual-container');
 
         function renderManual() {
@@ -273,7 +262,6 @@
                 stepEl.className = 'card-glass rounded-xl p-6 md:p-8 step-animate relative overflow-hidden';
                 stepEl.style.animationDelay = `${0.2 + (index * 0.1)}s`;
 
-                // Construcción del HTML interno
                 let htmlContent = `
                     <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl font-bold select-none text-white">
                         ${String(index + 1).padStart(2, '0')}
@@ -287,7 +275,6 @@
                     <p class="text-gray-300 mb-4 leading-relaxed">${step.description}</p>
                 `;
 
-                // Renderizar Código si existe
                 if (step.code) {
                     htmlContent += `
                         <div class="code-block rounded-md p-4 mb-4 group">
@@ -299,7 +286,6 @@
                     `;
                 }
 
-                // Subpasos
                 if (step.subSteps) {
                     htmlContent += `<ul class="list-disc list-inside text-gray-400 mb-4 bg-black/20 p-4 rounded-lg text-sm">`;
                     step.subSteps.forEach(sub => {
@@ -308,7 +294,6 @@
                     htmlContent += `</ul>`;
                 }
 
-                // Alertas/Notas
                 if (step.warning) {
                     htmlContent += `
                         <div class="flex items-start bg-red-900/20 border border-red-500/30 p-3 rounded mb-4 text-sm text-red-200">
@@ -324,7 +309,6 @@
                         </div>`;
                 }
 
-                // Área de Imagen (Estática)
                 if (step.imageSrc) {
                     htmlContent += `
                         <div class="mt-6 image-container">
@@ -344,10 +328,6 @@
             });
         }
 
-        // ---------------------------------------------------------
-        // FUNCIONES DE UTILIDAD
-        // ---------------------------------------------------------
-
         function copyToClipboard(btn) {
             const code = btn.parentElement.querySelector('code').innerText;
             navigator.clipboard.writeText(code).then(() => {
@@ -361,9 +341,7 @@
             });
         }
 
-        // ---------------------------------------------------------
-        // CANVAS ANIMATION (EFECTO DE RED)
-        // ---------------------------------------------------------
+        // Canvas Animation
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -413,7 +391,6 @@
                 particles[i].update();
                 particles[i].draw();
                 
-                // Conexiones
                 for (let j = i; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
@@ -432,14 +409,12 @@
             requestAnimationFrame(animateCanvas);
         }
 
-        // Event Listeners
         window.addEventListener('resize', resize);
         window.onload = () => {
             initCanvas();
             animateCanvas();
             renderManual();
         };
-
     </script>
 </body>
 </html>
