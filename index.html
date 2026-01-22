@@ -166,7 +166,7 @@
                 title: "Paso 2: Cliente Remmina",
                 description: "En el equipo cliente, necesitamos un gestor de conexiones. Instalamos Remmina:",
                 code: "sudo apt install remmina",
-                imageSrc: "images/foto2.png",
+                imageSrc: "images/foto2.PNG",
                 imageLabel: "Terminal instalando Remmina"
             },
             {
@@ -175,7 +175,7 @@
                 description: "Para aumentar la seguridad, usaremos autenticación por par de claves en lugar de solo contraseña.",
                 code: "ssh-keygen -t rsa -b 4096",
                 note: "Presiona Enter para dejar la ubicación por defecto y la passphrase vacía si deseas login automático.",
-                imageSrc: "images/foto3.png",
+                imageSrc: "images/foto3.PNG",
                 imageLabel: "Proceso de ssh-keygen"
             },
             {
@@ -190,14 +190,14 @@
                     "3. Pega la clave y guarda."
                 ],
                 warning: "Asegura los permisos correctos: chmod 700 ~/.ssh y chmod 600 authorized_keys",
-                imageSrc: "images/foto4.png",
+                imageSrc: "images/foto4.PNG",
                 imageLabel: "Comando ssh-copy-id ejecutado"
             },
             {
                 id: 5,
                 title: "Paso 5: Comprobación de Transferencia",
                 description: "Verificamos que la clave se ha pasado correctamente al archivo authorized_keys.",
-                imageSrc: "images/foto5.png",
+                imageSrc: "images/foto5.PNG",
                 imageLabel: "Verificación del archivo de claves"
             },
             {
@@ -205,7 +205,7 @@
                 title: "Paso 6: Permisos de Archivos",
                 description: "Confirmamos que los permisos de la carpeta .ssh y el archivo de claves sean seguros.",
                 code: "ls -ld ~/.ssh\nls -l ~/.ssh/authorized_keys",
-                imageSrc: "images/foto6.png",
+                imageSrc: "images/foto6.PNG",
                 imageLabel: "Listado de permisos de archivos"
             },
             {
@@ -213,7 +213,7 @@
                 title: "Paso 7: Configuración SSHD",
                 description: "Editamos el archivo de configuración del daemon para mayor seguridad (opcionalmente deshabilitar login por contraseña).",
                 code: "sudo nano /etc/ssh/sshd_config",
-                imageSrc: "images/foto7.png",
+                imageSrc: "images/foto7.PNG",
                 imageLabel: "Edición del archivo de configuración"
             },
             {
@@ -221,35 +221,35 @@
                 title: "Paso 8: Reiniciar Servicio",
                 description: "Para aplicar los cambios, reiniciamos el servicio SSH y comprobamos su estado.",
                 code: "sudo systemctl restart ssh\nsudo systemctl status ssh",
-                imageSrc: "images/foto8.png",
+                imageSrc: "images/foto8.PNG",
                 imageLabel: "Estado del servicio systemctl"
             },
             {
                 id: 9,
                 title: "Paso 9: Configurar Remmina - Inicio",
                 description: "Abrimos Remmina y creamos un nuevo perfil de conexión.",
-                imageSrc: "images/foto9.png",
+                imageSrc: "images/foto9.PNG",
                 imageLabel: "Interfaz principal de Remmina"
             },
             {
                 id: 10,
                 title: "Paso 10: Configurar Remmina - Protocolo",
                 description: "Seleccionamos protocolo SSH e introducimos la IP del servidor.",
-                imageSrc: "images/foto10.png",
+                imageSrc: "images/foto10.PNG",
                 imageLabel: "Configurando la IP"
             },
             {
                 id: 11,
                 title: "Paso 11: Configurar Remmina - Autenticación",
                 description: "Seleccionamos 'Archivo de identidad' y buscamos nuestra clave privada (id_rsa).",
-                imageSrc: "images/foto11.png",
+                imageSrc: "images/foto11.PNG",
                 imageLabel: "Seleccionando la clave privada"
             },
             {
                 id: 12,
                 title: "Paso 12: Conexión Final",
                 description: "Guardamos y conectamos. Deberíamos entrar sin pedir contraseña.",
-                imageSrc: "images/foto12.png",
+                imageSrc: "images/foto12.PNG",
                 imageLabel: "Éxito en la conexión"
             }
         ];
