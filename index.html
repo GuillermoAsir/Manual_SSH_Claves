@@ -162,12 +162,13 @@
                 imageLabel: "Terminal instalando openssh-server"
             },
             {
-                id: 2,
-                title: "Paso 2: Cliente Remmina",
-                description: "En el equipo cliente, necesitamos un gestor de conexiones. Instalamos Remmina:",
-                code: "sudo apt install remmina",
+                id: 1,
+                title: "Paso 1: Instalar Servicio SSH",
+                description: "Lo primero es instalar el servidor OpenSSH en la máquina remota. Abre la terminal y ejecuta:",
+                code: "sudo apt install openssh-server",
+                warning: "Asegúrate de tener conexión a internet y permisos de sudo.",
                 imageSrc: "images/foto1.PNG",
-                imageLabel: "Terminal instalando Remmina"
+                imageLabel: "Terminal instalando openssh-server"
             },
             {
                 id: 3,
